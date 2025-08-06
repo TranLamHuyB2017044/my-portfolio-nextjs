@@ -3,7 +3,7 @@ import GitHubIcon from './icons/GitHubIcon'
 
 export default function Header() {
     return (
-        <header className='flex flex-col py-24'>
+        <header className='flex flex-col justify-between py-24 min-h-screen'>
             <div>
                 <section id='infomation'>
                     <h1 className="text-5xl font-bold text-base-1">
