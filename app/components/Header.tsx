@@ -3,7 +3,6 @@
 import GitHubIcon from './icons/GitHubIcon'
 import FacebookIcon from './icons/FaceBookIcon'
 import LinkedInIcon from './icons/LinkedInIcon'
-import { useState } from 'react';
 
 export default function Header() {
 
@@ -32,7 +31,7 @@ export default function Header() {
 
 
     return (
-        <header className='flex flex-col justify-between py-24 min-h-screen'>
+        <header className='flex flex-col justify-between py-24 h-screen lg:w-[48%] sticky top-0'>
             <div>
                 <section id='infomation'>
                     <h1 className="text-5xl font-bold text-base-1">
