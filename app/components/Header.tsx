@@ -57,7 +57,7 @@ export default function Header() {
                                 <div className='h-[1px] mr-4  bg-base-1 group-hover:w-16 w-8 transition-all duration-200'
                                 ></div>
                                 <p
-                                    className={`text-xs duration-200 group-hover:text-base-1 text-base-2 `}
+                                    className={`text-xs duration-200 group-hover:text-base-1 text-base-2 font-bold tracking-[1.2px]`}
                                 >
                                     {item}
                                 </p>
