@@ -1,7 +1,7 @@
 import React from 'react'
 import ArrowIcon from './icons/ArrowIcon'
 
-export default function Project() {
+export default function Experience() {
     return (
         <div className="py-4 px-6 rounded-md my-12 lg:hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)]
     lg:hover:drop-shadow-lg lg:hover:bg-slate-800/50">
