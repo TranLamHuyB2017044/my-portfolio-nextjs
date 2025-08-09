@@ -8,7 +8,7 @@ const interFont = Inter({
 
 
 export const metadata: Metadata = {
-  title: "Tran Lam Huy - Portfolio",
+  title: "Tran Lam Huy",
   description: "",
 };
 
