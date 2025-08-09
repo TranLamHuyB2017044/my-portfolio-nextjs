@@ -8,6 +8,8 @@ import ResumeButton from "./components/ResumeButton";
 import Experience from "./components/Experience";
 import SectionButton from "./components/SectionButton";
 
+
+
 export default function Home() {
   const [activeIndex, setActiveIndex] = useState<number>(0);
   const [isScrollingByClick, setIsScrollingByClick] = useState(false);
@@ -59,6 +61,7 @@ export default function Home() {
     return () => observer.disconnect();
   }, [isScrollingByClick]);
 
+
   return (
     <div className="mx-auto min-h-screen max-w-screen-xl px-6 py-12 font-sans md:px-12 md:py-16 lg:py-0">
       <div className="flex lg:justify-between lg:gap-4 flex-col lg:flex-row">
@@ -75,9 +78,6 @@ export default function Home() {
 
           <section ref={sectionRefs[1]} id="experience" className="mt-12">
             <SectionButton text="Experience" />
-            <Experience />
-            <Experience />
-            <Experience />
             <Experience />
           </section>
 
