@@ -4,7 +4,12 @@ import GitHubIcon from './icons/GitHubIcon'
 import FacebookIcon from './icons/FaceBookIcon'
 import LinkedInIcon from './icons/LinkedInIcon'
 
-export default function Header() {
+interface HeaderProps {
+    activeIndex: number;
+    onNavClick: (index: number) => void;
+}
+
+export default function Header({ activeIndex, onNavClick }: HeaderProps) {
 
     const socialLinks = [
         {
@@ -31,7 +36,7 @@ export default function Header() {
 
 
     return (
-        <header className='flex flex-col justify-between py-24 h-screen lg:w-[48%] sticky top-0'>
+        <header className='flex flex-col lg:justify-between lg:py-24 lg:h-screen lg:w-[48%] lg:sticky top-0'>
             <div>
                 <section id='infomation'>
                     <h1 className="text-5xl font-bold text-base-1">
@@ -45,20 +50,23 @@ export default function Header() {
                     </p>
                 </section>
 
-                <section id='navigation'>
+                <section id='navigation' className='hidden lg:block'>
                     <ul className='mt-16 text-base-1 w-max uppercase'>
-                        {navItems.map((item) => (
+                        {navItems.map((item, index) => (
                             <li
                                 key={item}
+                                onClick={() => onNavClick(index)}
 
                                 className='cursor-pointer flex items-center my-4 group'
                             >
-                                <div className='h-[1px] mr-4  bg-base-1 group-hover:w-16 w-8 transition-all duration-200'
+                                <div
+                                    className={`h-[1px] mr-4 transition-all duration-200 ${activeIndex === index ? "w-16 bg-base-1" : "w-8 bg-base-1 group-hover:w-16"
+                                        }`}
                                 ></div>
                                 <p
-                                    className={`text-xs duration-200 group-hover:text-base-1 text-base-2 font-bold tracking-[1.2px]`}
-                                >
-                                    {item}
+                                    className={`text-xs font-bold tracking-[1.2px] duration-200 ${activeIndex === index ? "text-base-1" : "text-base-2 group-hover:text-base-1"
+                                        }`}
+                                >{item}
                                 </p>
                             </li>
                         ))}
@@ -67,7 +75,7 @@ export default function Header() {
             </div>
 
 
-            <section id="socials">
+            <section id="socials" className='mt-8 lg:mt-0'>
                 <div className="flex gap-6">
                     {socialLinks.map(({ href, title, icon }) => (
                         <a
