@@ -1,6 +1,6 @@
 import ArrowIcon from './icons/ArrowIcon'
 import React, { useEffect, useState } from "react";
-import type { ExperiencePost } from "@/app/utils/MarkdownUtils";
+import { ExperiencePost } from "@/app/utils/MarkdownUtils";
 export default function Experience() {
 
     const [experiences, setExperiences] = useState<ExperiencePost[] | null>(null);
@@ -21,14 +21,7 @@ export default function Experience() {
     return (
         <div>
 
-            {experiences.sort((a, b) => {
-                if (
-                    new Date(a.metadata.date) > new Date(b.metadata.date)
-                ) {
-                    return -1
-                }
-                return 1
-            }).map((item, index) => (
+            {experiences.map((item, index) => (
                 <div key={index} className="py-4 lg:px-6 rounded-md mb-8 lg:hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)]
         lg:hover:drop-shadow-lg lg:hover:bg-slate-800/50">
 
@@ -37,6 +30,7 @@ export default function Experience() {
                     >
                         <p className='text-base-2 min-w-32'>
                             {item.metadata.date}
+                            
                         </p>
                         <div className='flex flex-col gap-4 justify-start'>
                             <div className="flex items-center">

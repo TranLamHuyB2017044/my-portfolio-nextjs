@@ -5,3 +5,5 @@ export async function GET() {
   const experiences = getExperiences();
   return NextResponse.json(experiences);
 }
+
+
