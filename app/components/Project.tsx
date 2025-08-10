@@ -8,10 +8,7 @@ export default function Project() {
 
 
     const [projects, setProjects] = useState<ProjectPost[] | null>(null);
-    const path = `${imageLocalPath}ziichat_landing_page.jpg`;
 
-    console.log('imageLocalPath', path);
-    console.log('imageLocalPath123');
 
 
     useEffect(() => {
@@ -32,15 +29,15 @@ export default function Project() {
     return (
         <div>
             {projects.map((item, index) => (
-                <div key={index} className="py-4 lg:px-6 rounded-md mb-8 lg:hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)]
+                <div key={index} className=" py-4 lg:px-6 rounded-md mb-8 lg:hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)]
             lg:hover:drop-shadow-lg lg:hover:bg-slate-800/50">
 
-                    <a href='https://ziichat.com/' className='flex items-start gap-4  curs group' target="_blank"
+                    <a href={item.link} className='flex items-start gap-4  curs group' target="_blank"
                         rel="noopener noreferrer"
                     >
                         {item.metadata.thumbnail && (
 
-                            <Image className='rounded-md' alt={item.metadata.title || 'Thumbnail'} width={100} height={50} src={path} />
+                            <Image className='rounded-md' alt={item.metadata.title || 'Thumbnail'} width={100} height={50} src={`${imageLocalPath}${item.metadata.thumbnail}`} />
                         )}
 
                         <div className='flex flex-col gap-4 justify-start'>

@@ -21,6 +21,7 @@ export type ProjectPost = {
   slug: string;
   content: string;
   thumbnail: string; 
+  link: string;
 };
 
 // ==================== File Utilities ====================
@@ -41,10 +42,12 @@ function readMDXFile<T>(filePath: string): T {
       date: data.date as string,
       tech: Array.isArray(data.tech) ? (data.tech as string[]) : [],
       thumbnail: data.thumbnail as string | undefined,
+      link: data.link as string | undefined,
     },
     slug: path.basename(filePath, path.extname(filePath)),
     content: content.trim(),
     thumbnail: (data.thumbnail as string) ?? "",
+    link: (data.link as string) ?? "",
   } as unknown as T;
 }
 

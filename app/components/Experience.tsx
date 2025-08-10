@@ -22,15 +22,14 @@ export default function Experience() {
         <div>
 
             {experiences.map((item, index) => (
-                <div key={index} className="py-4 lg:px-6 rounded-md mb-8 lg:hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)]
+                <div key={index} className=" py-4 lg:px-6 rounded-md mb-8 lg:hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)]
         lg:hover:drop-shadow-lg lg:hover:bg-slate-800/50">
 
-                    <a href='' className='flex items-start gap-4  curs group' target="_blank"
-                        rel="noopener noreferrer"
+                    <div className='flex items-start gap-4  curs group'
                     >
                         <p className='text-base-2 min-w-32'>
                             {item.metadata.date}
-                            
+
                         </p>
                         <div className='flex flex-col gap-4 justify-start'>
                             <div className="flex items-center">
@@ -56,7 +55,7 @@ export default function Experience() {
 
                             </ul>
                         </div>
-                    </a>
+                    </div>
                 </div>
 
             ))}
