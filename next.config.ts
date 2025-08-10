@@ -12,4 +12,11 @@ const withMDX = createMDX({
 
 })
 
+
+module.exports = {
+  images: {
+    remotePatterns: [new URL('https://ziichat.com/images/image-feature-section-enhance-connectivity.png')],
+  },
+}
+
 export default withMDX(nextConfig)

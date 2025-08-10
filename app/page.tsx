@@ -7,6 +7,7 @@ import Objective from "./components/Objective";
 import ResumeButton from "./components/ResumeButton";
 import Experience from "./components/Experience";
 import SectionButton from "./components/SectionButton";
+import Project from "./components/Project";
 
 
 
@@ -85,7 +86,7 @@ export default function Home() {
 
           <section ref={sectionRefs[2]} id="projects" className="mt-12">
             <SectionButton text="Projects" />
-            <p>Projects content...</p>
+            <Project />
           </section>
         </main>
       </div>
