@@ -43,13 +43,12 @@ export default function Experience() {
                                 <h2 className='text-base-1 group-hover:text-base-3 duration-200 font-medium'>
                                     {item.metadata.title}
                                 </h2>
-                                <div className="group-hover:-translate-y-1 group-hover:translate-x-1 duration-200 group-hover:text-base-3">
+                                <div className="mb-0.5 group-hover:-translate-y-1 group-hover:translate-x-1 duration-200 group-hover:text-base-3 text-base-1">
 
                                     <ArrowIcon />
                                 </div>
                             </div>
                             <p className='text-base-2'>
-                                {/* <CustomMDX source={item.content}/> */}
                                 {item.content}
                             </p>
                             <ul id='technologies' className='flex flex-wrap gap-2 mt-2'>
