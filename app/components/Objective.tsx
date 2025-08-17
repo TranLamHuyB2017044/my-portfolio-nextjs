@@ -5,8 +5,8 @@ export default function Objective() {
         <div>
             <p className='mb-4'>
                 I am a Computer Science graduate from <b>Can Tho University</b> with over one year of hands-on experience in
-                <b>Flutter development</b>. I specialize in crafting beautiful and high-performance mobile applications, with my most notable project being
-                <b>ZiiChat</b>, a chat application published on both Google Play and App Store that has reached thousands of users.
+                <b> Flutter development</b>. I specialize in crafting beautiful and high-performance mobile applications, with my most notable project being
+                <b> ZiiChat</b>, a chat application published on both Google Play and App Store that has reached thousands of users.
             </p>
 
             <p className='mb-4'>
