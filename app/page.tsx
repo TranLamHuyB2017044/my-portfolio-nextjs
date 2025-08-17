@@ -33,26 +33,27 @@ export default function Home() {
   };
 
   useEffect(() => {
+    const ratios = new Array(sectionRefs.length).fill(0);
+
     const observer = new IntersectionObserver(
       (entries) => {
         if (isScrollingByClick) return;
 
-        const visibleSection = entries.reduce((max, entry) => {
-          return entry.intersectionRatio > max.intersectionRatio ? entry : max;
-        }, entries[0]);
-
-        if (visibleSection && visibleSection.target) {
-          const index = sectionRefs.findIndex(
-            (ref) => ref.current === visibleSection.target
-          );
+        entries.forEach((entry) => {
+          const index = sectionRefs.findIndex((ref) => ref.current === entry.target);
           if (index !== -1) {
-            setActiveIndex(index);
+            ratios[index] = entry.intersectionRatio;
           }
+        });
+
+        const maxRatio = Math.max(...ratios);
+        const mostVisibleIndex = ratios.indexOf(maxRatio);
+
+        if (mostVisibleIndex !== -1) {
+          setActiveIndex(mostVisibleIndex);
         }
       },
-      {
-        threshold: 0.5,
-      }
+      { threshold: [0, 0.25, 0.5, 0.75, 1] }
     );
 
     sectionRefs.forEach((ref) => {
@@ -60,7 +61,8 @@ export default function Home() {
     });
 
     return () => observer.disconnect();
-  }, [isScrollingByClick]);
+  }, [isScrollingByClick, sectionRefs]);
+
 
 
   return (
@@ -71,13 +73,13 @@ export default function Home() {
           <section
             ref={sectionRefs[0]}
             id="about"
-            className="mb-16 scroll-mt-16 lg:scroll-mt-24"
+            className=" scroll-mt-16 lg:scroll-mt-24"
           >
             <SectionButton text="About" />
             <Objective />
           </section>
 
-          <section ref={sectionRefs[1]} id="experience" className="mt-12">
+          <section ref={sectionRefs[1]} id="experience" className="pt-24">
             <SectionButton text="Experience" />
             <Experience />
           </section>

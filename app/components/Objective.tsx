@@ -4,17 +4,22 @@ export default function Objective() {
     return (
         <div>
             <p className='mb-4'>
-                I’m a developer passionate about crafting accessible, pixel-perfect user interfaces that blend thoughtful design with robust engineering. My favorite work lies at the intersection of design and development, creating experiences that not only look great but are meticulously built for performance and usability.
+                I am a Computer Science graduate from <b>Can Tho University</b> with over one year of hands-on experience in
+                <b>Flutter development</b>. I specialize in crafting beautiful and high-performance mobile applications, with my most notable project being
+                <b>ZiiChat</b>, a chat application published on both Google Play and App Store that has reached thousands of users.
             </p>
+
             <p className='mb-4'>
-                Currently, I&apos;m a Senior Front-End Engineer at Klaviyo, specializing in accessibility. I contribute to the creation and maintenance of UI components that power Klaviyo’s frontend, ensuring our platform meets web accessibility standards and best practices to deliver an inclusive user experience.
+                During my studies, I gained practical experience in <b>AI and Deep Learning</b>, working on projects involving data preprocessing,
+                model training, and deployment of machine learning solutions. I also built <b>full-stack e-commerce websites</b> with integrated AI features,
+                combining my skills in frontend, backend, and machine learning to deliver end-to-end solutions.
             </p>
+
             <p className='mb-4'>
-                In the past, I&apos;ve had the opportunity to develop software across a variety of settings — from advertising agencies and large corporations to start-ups and small digital product studios. Additionally, I also released a comprehensive video course a few years ago, guiding learners through building a web app with the Spotify API.
+                I am passionate about building impactful, user-focused applications and continuously expanding my knowledge in both 
+                <b> frontend development</b> and <b>AI-driven technologies</b>.
             </p>
-            <p className='mb-4'>
-                In my spare time, I&apos;m usually climbing, reading, hanging out with my wife and two cats, or running around Hyrule searching for Korok seeds
-            </p>
+ 
         </div>
 
     )

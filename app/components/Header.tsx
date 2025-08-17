@@ -46,7 +46,7 @@ export default function Header({ activeIndex, onNavClick }: HeaderProps) {
                         Frontend Developer
                     </h2>
                     <p className='mt-3 text-base-2 max-w-xs'>
-                        I build accessible, pixel-perfect digital experiences for the web.
+                        I build convenient and AI-integrated apps/websites.
                     </p>
                 </section>
 
