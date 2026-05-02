@@ -8,6 +8,12 @@ export type Metadata = {
   date: string;
   tech: string[];
   thumbnail?: string; 
+  link?: string;
+  jobType?: string;
+  company?: string;
+  companyType?: string;
+  stats?: { value: string; label: string }[];
+  bullets?: string[];
 };
 
 export type ExperiencePost = {
@@ -16,12 +22,30 @@ export type ExperiencePost = {
   content: string;
 };
 
+export type ProjectMetadata = {
+  title: string;
+  type: string;
+  typeClass: 'mobile' | 'ai' | 'web' | '';
+  category: string[];
+  tags: string[];
+  coreTags: string[];
+  desc: string;
+  thumb: string;
+  thumbnail?: string;
+  stats: { n: string; l: string }[];
+  highlights: string[];
+  demoUrl: string;
+  videoUrl?: string;
+  githubUrl: string;
+  images: string[];
+  order: number;
+  featured: boolean;
+};
+
 export type ProjectPost = {
-  metadata: Metadata;
+  metadata: ProjectMetadata;
   slug: string;
   content: string;
-  thumbnail: string; 
-  link: string;
 };
 
 // ==================== File Utilities ====================
@@ -43,11 +67,28 @@ function readMDXFile<T>(filePath: string): T {
       tech: Array.isArray(data.tech) ? (data.tech as string[]) : [],
       thumbnail: data.thumbnail as string | undefined,
       link: data.link as string | undefined,
+      jobType: data.jobType as string | undefined,
+      company: data.company as string | undefined,
+      companyType: data.companyType as string | undefined,
+      stats: data.stats as { value?: string; label?: string; n?: string; l?: string }[] | undefined,
+      bullets: Array.isArray(data.bullets) ? (data.bullets as string[]) : [],
+      type: data.type as string | undefined,
+      typeClass: data.typeClass as any,
+      category: Array.isArray(data.category) ? (data.category as string[]) : [],
+      tags: Array.isArray(data.tags) ? (data.tags as string[]) : [],
+      coreTags: Array.isArray(data.coreTags) ? (data.coreTags as string[]) : [],
+      desc: data.desc as string | undefined,
+      thumb: data.thumb as string | undefined,
+      highlights: Array.isArray(data.highlights) ? (data.highlights as string[]) : [],
+      demoUrl: data.demoUrl as string | undefined,
+      videoUrl: data.videoUrl as string | undefined,
+      githubUrl: data.githubUrl as string | undefined,
+      images: Array.isArray(data.images) ? (data.images as string[]) : [],
+      order: typeof data.order === 'number' ? data.order : 999,
+      featured: !!data.featured,
     },
     slug: path.basename(filePath, path.extname(filePath)),
     content: content.trim(),
-    thumbnail: (data.thumbnail as string) ?? "",
-    link: (data.link as string) ?? "",
   } as unknown as T;
 }
 
@@ -66,9 +107,10 @@ export function getExperiences(): ExperiencePost[] {
 }
 
 export function getProjects(): ProjectPost[] {
-  return getMDXData<ProjectPost>(
+  const projects = getMDXData<ProjectPost>(
     path.join(process.cwd(), "content", "projects")
   );
+  return projects.sort((a, b) => a.metadata.order - b.metadata.order);
 }
 
 // ==================== Date Formatting ====================

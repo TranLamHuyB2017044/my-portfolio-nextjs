@@ -5,8 +5,8 @@ import AuraEffect from "./components/effects/AuraEffect";
 
 const interFont = Inter({
   subsets: ["latin"],
+  variable: "--font-inter",
 });
-
 
 export const metadata: Metadata = {
   title: "Tran Lam Huy",
@@ -21,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${interFont.className} bg-slate-900 leading-relaxed text-slate-400 antialiased selection:bg-teal-300 selection:text-teal-900`}
+        className={`${interFont.variable} font-sans bg-slate-900 leading-relaxed text-slate-400 antialiased selection:bg-teal-300 selection:text-teal-900`}
       >
         <AuraEffect/>
         {children}

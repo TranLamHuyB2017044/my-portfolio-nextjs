@@ -39,35 +39,38 @@ export default function Header({ activeIndex, onNavClick }: HeaderProps) {
         <header className='flex flex-col lg:justify-between lg:py-24 lg:h-screen lg:w-[48%] lg:sticky top-0'>
             <div>
                 <section id='infomation'>
-                    <h1 className="text-5xl font-bold text-base-1">
-                        Tran Lam Huy
+                    <h1 className="text-5xl md:text-6xl font-bold tracking-tight text-base-1">
+                        Trần Lâm <span className="text-base-3">Huy</span>
                     </h1>
-                    <h2 className='text-xl mt-3 text-base-1 '>
-                        Frontend Developer
+                    <h2 className='text-xl mt-4 font-mono text-base-1 font-medium'>
+                        Flutter Developer
                     </h2>
-                    <p className='mt-3 text-base-2 max-w-xs'>
-                        I build convenient and AI-integrated apps/websites.
+                    <p className='mt-4 text-base-2 max-w-[420px] text-lg leading-relaxed'>
+                        I build real-world applications powered by AI, focusing on performance, elegant problem-solving, and complete end-to-end systems.
                     </p>
                 </section>
 
-                <section id='navigation' className='hidden lg:block'>
-                    <ul className='mt-16 text-base-1 w-max uppercase'>
+                <section id='navigation' className='hidden lg:block mt-16'>
+                    <ul className='flex flex-col gap-6 w-max'>
                         {navItems.map((item, index) => (
                             <li
                                 key={item}
                                 onClick={() => onNavClick(index)}
-
-                                className='cursor-pointer flex items-center my-4 group'
+                                className='cursor-pointer flex items-center group'
                             >
+                                <span className={`font-mono text-xs font-semibold tracking-wider transition-colors duration-300 ${activeIndex === index ? "text-base-1" : "text-base-2 opacity-50 group-hover:opacity-100 group-hover:text-base-1"}`}>
+                                    0{index + 1}
+                                </span>
                                 <div
-                                    className={`h-[1px] mr-4 transition-all duration-200 ${activeIndex === index ? "w-16 bg-base-1" : "w-8 bg-base-1 group-hover:w-16"
+                                    className={`h-[1px] mx-4 transition-all duration-300 ease-out ${activeIndex === index ? "w-16 bg-base-1" : "w-8 bg-base-2 opacity-50 group-hover:w-16 group-hover:opacity-100 group-hover:bg-base-1"
                                         }`}
                                 ></div>
-                                <p
-                                    className={`text-xs font-bold tracking-[1.2px] duration-200 ${activeIndex === index ? "text-base-1" : "text-base-2 group-hover:text-base-1"
+                                <span
+                                    className={`text-[13px] font-bold tracking-[0.15em] uppercase transition-colors duration-300 ${activeIndex === index ? "text-base-1" : "text-base-2 opacity-50 group-hover:opacity-100 group-hover:text-base-1"
                                         }`}
-                                >{item}
-                                </p>
+                                >
+                                    {item}
+                                </span>
                             </li>
                         ))}
                     </ul>
