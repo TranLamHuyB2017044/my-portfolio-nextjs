@@ -1,0 +1,36 @@
+---
+title: "AI Face Attendance"
+type: "AI · Computer Vision"
+typeClass: "ai"
+category: ["ai"]
+tags: ["Python", "InsightFace", "OpenCV", "Qdrant", "MongoDB", "RTSP"]
+coreTags: ["InsightFace", "OpenCV", "Qdrant"]
+desc: "A real-time facial recognition attendance system integrating live camera streams and high-speed vector search."
+thumb: "FACE"
+stats:
+  - { n: "Real-time", l: "Face Match" }
+  - { n: "RTSP", l: "Camera Stream" }
+  - { n: "Vector", l: "Face DB" }
+highlights:
+  - "Built a robust facial recognition pipeline using <b>InsightFace</b> to accurately identify employees in real-time"
+  - "Integrated <b>OpenCV</b> to connect and process live video feeds seamlessly from <b>RTSP IP cameras</b>"
+  - "Utilized <b>Qdrant Vector DB</b> to store and query facial embeddings, enabling ultra-fast matching at scale"
+  - "Developed a comprehensive backend using <b>MongoDB</b> to manage employee profiles, shifts, and daily attendance records"
+demoUrl: ""
+videoUrl: "attendance_system/attendance_system_6.mp4"
+githubUrl: ""
+images: [
+  "attendance_system/attendance_system.png",
+  "attendance_system/attendance_system_1.png",
+  "attendance_system/attendance_system_2.png",
+  "attendance_system/attendance_system_3.png",
+  "attendance_system/attendance_system_4.png",
+  "attendance_system/attendance_system_5.jpeg"
+]
+order: 2
+featured: false
+---
+
+An advanced AI-powered employee attendance system designed to automate timekeeping using state-of-the-art facial recognition technology. The system connects seamlessly to existing CCTV infrastructure via RTSP protocols using OpenCV, extracting live video frames for continuous real-time processing.
+
+At the core of the AI pipeline is the InsightFace deep learning model, generating highly accurate facial embeddings regardless of lighting or angles. These embeddings are indexed and searched using Qdrant Vector DB, allowing for lightning-fast identity verification. All operational data, including employee profiles and attendance logs, is securely managed via MongoDB, providing administrators with a reliable and modern HR solution.

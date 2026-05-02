@@ -47,6 +47,7 @@ export default function Project() {
 function ProjectCard({ project, index, isExpanded, onToggleExpand }: { project: ProjectPost, index: number, isExpanded: boolean, onToggleExpand: () => void }) {
   const meta = project.metadata;
   const [isVideoOpen, setIsVideoOpen] = useState(false);
+  const [selectedImgIdx, setSelectedImgIdx] = useState<number | null>(null);
   
   const typeColors: Record<string, string> = {
     mobile: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20',
@@ -64,6 +65,18 @@ function ProjectCard({ project, index, isExpanded, onToggleExpand }: { project: 
   };
 
   const coverImage = getImageUrl(rawCover);
+
+  const handlePrevImg = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (selectedImgIdx === null || !meta.images) return;
+    setSelectedImgIdx((selectedImgIdx - 1 + meta.images.length) % meta.images.length);
+  };
+
+  const handleNextImg = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (selectedImgIdx === null || !meta.images) return;
+    setSelectedImgIdx((selectedImgIdx + 1) % meta.images.length);
+  };
 
   return (
     <motion.div
@@ -169,8 +182,15 @@ function ProjectCard({ project, index, isExpanded, onToggleExpand }: { project: 
               {meta.images && meta.images.length > 1 && (
                 <div className="flex gap-2 overflow-x-auto pb-3 mb-3 scrollbar-thin scrollbar-thumb-[#1a2840] scrollbar-track-transparent">
                   {meta.images.slice(1).map((img, i) => (
-                    <div key={i} className="flex-shrink-0 relative w-32 h-20 rounded border border-[#1a2840] overflow-hidden">
-                      <Image src={getImageUrl(img)} alt={`${meta.title} screenshot ${i}`} fill className="object-cover" />
+                    <div 
+                      key={i} 
+                      onClick={() => setSelectedImgIdx(i + 1)}
+                      className="flex-shrink-0 relative w-32 h-20 rounded border border-[#1a2840] overflow-hidden cursor-pointer hover:border-[#00b4d8] transition-colors group/img"
+                    >
+                      <Image src={getImageUrl(img)} alt={`${meta.title} screenshot ${i}`} fill className="object-cover group-hover/img:scale-105 transition-transform duration-500" />
+                      <div className="absolute inset-0 bg-black/0 group-hover/img:bg-black/20 transition-colors flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white opacity-0 group-hover/img:opacity-100 transition-opacity drop-shadow-lg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" /></svg>
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -203,15 +223,15 @@ function ProjectCard({ project, index, isExpanded, onToggleExpand }: { project: 
               {/* CTA Buttons */}
               <div className="flex gap-2 w-full mt-2">
                 {meta.demoUrl && (
-                  <a href={meta.demoUrl} target="_blank" rel="noreferrer" className="flex-1 py-2 flex items-center justify-center gap-2 rounded border border-[#1a2840] bg-transparent text-[#4a6880] hover:text-[#f0f4ff] hover:border-[#4a6880] transition-colors text-sm font-medium">
+                  <a href={meta.demoUrl} target="_blank" rel="noreferrer" className="flex-1 py-2 px-1 flex items-center justify-center gap-1.5 rounded border border-[#1a2840] bg-transparent text-[#4a6880] hover:text-[#f0f4ff] hover:border-[#4a6880] transition-colors text-[11px] font-medium whitespace-nowrap uppercase tracking-wider">
                     Landing page
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
                   </a>
                 )}
                 {meta.videoUrl && (
-                  <button onClick={() => setIsVideoOpen(true)} className="flex-1 py-2 flex items-center justify-center gap-2 rounded bg-cyan-500/10 text-[#00b4d8] border border-cyan-500/20 hover:bg-cyan-500/20 transition-colors text-sm font-medium">
+                  <button onClick={() => setIsVideoOpen(true)} className="flex-1 py-2 px-1 flex items-center justify-center gap-1.5 rounded bg-cyan-500/10 text-[#00b4d8] border border-cyan-500/20 hover:bg-cyan-500/20 transition-colors text-[11px] font-medium whitespace-nowrap uppercase tracking-wider">
                     View live demo
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
                   </button>
                 )}
               </div>
@@ -251,6 +271,61 @@ function ProjectCard({ project, index, isExpanded, onToggleExpand }: { project: 
               >
                 Your browser does not support the video tag.
               </video>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Image Modal Overlay */}
+      <AnimatePresence>
+        {selectedImgIdx !== null && meta.images && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[60] flex items-center justify-center p-4 md:p-10 bg-[#080e1e]/95 backdrop-blur-sm"
+            onClick={() => setSelectedImgIdx(null)}
+          >
+            <motion.div
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              onClick={(e) => e.stopPropagation()}
+              className="relative w-full max-w-6xl h-[85vh] bg-transparent rounded-xl flex items-center justify-center group/modal"
+            >
+              <button 
+                onClick={() => setSelectedImgIdx(null)}
+                className="absolute top-0 right-0 md:-top-6 md:-right-6 z-10 w-10 h-10 flex items-center justify-center rounded-full bg-[#0c1525] border border-[#1a2840] text-[#f0f4ff] hover:bg-[#00b4d8] transition-colors shadow-lg"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" /></svg>
+              </button>
+
+              {/* Navigation Arrows */}
+              {meta.images.length > 1 && (
+                <>
+                  <button 
+                    onClick={handlePrevImg}
+                    className="absolute left-4 z-10 w-12 h-12 flex items-center justify-center rounded-full bg-[#0c1525]/60 text-[#f0f4ff] border border-[#1a2840] hover:bg-[#00b4d8] hover:border-[#00b4d8] transition-all opacity-0 group-hover/modal:opacity-100 -translate-x-4 group-hover/modal:translate-x-0"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
+                  </button>
+                  <button 
+                    onClick={handleNextImg}
+                    className="absolute right-4 z-10 w-12 h-12 flex items-center justify-center rounded-full bg-[#0c1525]/60 text-[#f0f4ff] border border-[#1a2840] hover:bg-[#00b4d8] hover:border-[#00b4d8] transition-all opacity-0 group-hover/modal:opacity-100 translate-x-4 group-hover/modal:translate-x-0"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
+                  </button>
+                </>
+              )}
+
+              <div className="relative w-full h-full">
+                <Image src={getImageUrl(meta.images[selectedImgIdx])} alt="Expanded screenshot" fill className="object-contain drop-shadow-2xl" />
+              </div>
+
+              {/* Pagination Info */}
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-[#0c1525]/80 border border-[#1a2840] text-[#4a6880] text-xs font-mono">
+                {selectedImgIdx + 1} / {meta.images.length}
+              </div>
             </motion.div>
           </motion.div>
         )}
