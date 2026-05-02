@@ -1,5 +1,5 @@
-import ArrowIcon from './icons/ArrowIcon'
 import React, { useEffect, useState } from "react";
+import { ExperiencePost } from "../utils/MarkdownUtils";
 const renderBoldText = (text: string) => {
     const parts = text.split(/(\*\*.*?\*\*)/g);
     return parts.map((part, i) => {
@@ -79,7 +79,7 @@ export default function Experience() {
                             {/* Stats Box */}
                             {item.metadata.stats && item.metadata.stats.length > 0 && (
                                 <div className="my-3 p-4 rounded-xl border border-slate-800/80 bg-[#161b22]/30 backdrop-blur-sm grid grid-cols-3 divide-x divide-slate-800/80">
-                                    {item.metadata.stats.map((stat, i) => (
+                                    {item.metadata.stats.map((stat: { value?: string; label?: string }, i: number) => (
                                         <div key={i} className="flex flex-col items-center justify-center text-center px-2">
                                             <div className="text-2xl font-bold text-cyan-400 mb-1 tracking-tight">{stat.value}</div>
                                             <div className="text-[10px] font-mono text-slate-500 tracking-[0.15em] uppercase whitespace-nowrap overflow-hidden text-ellipsis w-full">{stat.label}</div>
@@ -91,7 +91,7 @@ export default function Experience() {
                             {/* Bullets */}
                             {item.metadata.bullets && item.metadata.bullets.length > 0 && (
                                 <ul className="space-y-4 mt-2">
-                                    {item.metadata.bullets.map((bullet, i) => (
+                                    {item.metadata.bullets.map((bullet: string, i: number) => (
                                         <li key={i} className="flex gap-4 items-start text-[14px] text-slate-400 leading-relaxed font-sans">
                                             <span className="text-slate-600 mt-1.5 opacity-80 text-xs shrink-0">→</span>
                                             <span>{renderBoldText(bullet)}</span>
@@ -109,7 +109,7 @@ export default function Experience() {
 
                             {/* Tech Stack */}
                             <ul className="flex flex-wrap gap-2 mt-4">
-                                {item.metadata.tech.map((tech, i) => (
+                                {item.metadata.tech.map((tech: string, i: number) => (
                                     <li key={i}>
                                         <div className="rounded-md px-3 py-1.5 text-[10px] font-mono tracking-widest font-semibold bg-slate-800/40 text-slate-400 border border-slate-700/50 hover:border-cyan-500/30 hover:text-cyan-300 transition-colors">
                                             {tech.toUpperCase()}

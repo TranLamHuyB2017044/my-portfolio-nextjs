@@ -75,7 +75,7 @@ export default function Home() {
     });
 
     return () => observer.disconnect();
-  }, [isScrollingByClick, activeIndex]);
+  }, [isScrollingByClick, activeIndex, sectionIds, sectionRefs]);
 
   // Snap to content effect for Hero section
   useEffect(() => {
