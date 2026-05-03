@@ -73,7 +73,7 @@ function readMDXFile<T>(filePath: string): T {
       stats: data.stats as { value?: string; label?: string; n?: string; l?: string }[] | undefined,
       bullets: Array.isArray(data.bullets) ? (data.bullets as string[]) : [],
       type: data.type as string | undefined,
-      typeClass: data.typeClass as 'mobile' | 'ai' | 'web' | '',
+      typeClass: (data.typeClass as unknown as 'mobile' | 'ai' | 'web' | '') || '',
       category: Array.isArray(data.category) ? (data.category as string[]) : [],
       tags: Array.isArray(data.tags) ? (data.tags as string[]) : [],
       coreTags: Array.isArray(data.coreTags) ? (data.coreTags as string[]) : [],

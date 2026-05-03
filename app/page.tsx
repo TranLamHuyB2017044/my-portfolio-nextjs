@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect, useMemo } from "react";
 
 import Header from "./components/Header";
 import Objective from "./components/Objective";
@@ -15,17 +15,17 @@ import ScrollToTop from "./components/ScrollToTop";
 
 import { motion } from "framer-motion";
 
+const sectionIds = ["about", "experience", "projects"];
+
 export default function Home() {
   const [activeIndex, setActiveIndex] = useState<number>(0);
   const [isScrollingByClick, setIsScrollingByClick] = useState(false);
 
-  const sectionRefs = [
-    useRef<HTMLDivElement>(null),
-    useRef<HTMLDivElement>(null),
-    useRef<HTMLDivElement>(null),
-  ];
+  const aboutRef = useRef<HTMLDivElement>(null);
+  const experienceRef = useRef<HTMLDivElement>(null);
+  const projectsRef = useRef<HTMLDivElement>(null);
 
-  const sectionIds = ["about", "experience", "projects"];
+  const sectionRefs = useMemo(() => [aboutRef, experienceRef, projectsRef], [aboutRef, experienceRef, projectsRef]);
 
   const handleScrollTo = (index: number) => {
     setActiveIndex(index);
@@ -75,7 +75,7 @@ export default function Home() {
     });
 
     return () => observer.disconnect();
-  }, [isScrollingByClick, activeIndex, sectionIds, sectionRefs]);
+  }, [isScrollingByClick, activeIndex]);
 
   // Snap to content effect for Hero section
   useEffect(() => {
