@@ -162,11 +162,11 @@ export default function Home() {
       <HeroSection />
 
       {/* ── Existing portfolio sections ──────────────────── */}
-      <div id="content-wrapper" className="mx-auto min-h-screen max-w-screen-xl px-6 py-12 font-sans md:px-12 md:py-16 lg:py-0">
+      <div id="content-wrapper" className="mx-auto min-h-screen max-w-screen-xl px-4 sm:px-6 py-8 sm:py-12 font-sans md:px-12 md:py-16 lg:py-0">
         <div className="flex lg:justify-between lg:gap-4 flex-col lg:flex-row">
           <Header activeIndex={activeIndex} onNavClick={handleScrollTo} />
           
-          <main id="content" className="lg:w-[52%] mt-24 flex flex-col items-start pb-24">
+          <main id="content" className="lg:w-[52%] mt-8 lg:mt-24 flex flex-col items-start pb-12 sm:pb-24">
             {/* About Section */}
             <motion.section
               ref={sectionRefs[0]}

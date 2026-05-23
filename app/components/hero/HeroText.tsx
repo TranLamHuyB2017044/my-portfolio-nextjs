@@ -9,35 +9,35 @@ const lines = [
     delay: 0,
     element: 'label',
     className:
-      'hero-label inline-block text-xs font-semibold uppercase tracking-[3px] text-teal-400 mb-4',
+      'hero-label inline-block text-[11px] sm:text-xs font-semibold uppercase tracking-[3px] text-teal-400 mb-4',
     content: '👋 Hey, I\'m',
   },
   {
     delay: 0.15,
     element: 'h1',
     className:
-      'hero-name text-6xl sm:text-7xl font-extrabold leading-none tracking-tight text-white',
+      'hero-name text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-none tracking-tight text-white',
     content: 'Trần Lâm Huy',
   },
   {
     delay: 0.3,
     element: 'h2',
     className:
-      'hero-role mt-3 text-2xl sm:text-3xl font-bold bg-gradient-to-r from-teal-400 via-sky-400 to-indigo-400 bg-clip-text text-transparent',
+      'hero-role mt-3 text-xl sm:text-2xl md:text-3xl font-bold bg-gradient-to-r from-teal-400 via-sky-400 to-indigo-400 bg-clip-text text-transparent',
     content: 'Flutter Developer',
   },
   {
     delay: 0.45,
     element: 'p',
     className:
-      'hero-tagline mt-4 text-lg sm:text-xl font-medium text-slate-300',
+      'hero-tagline mt-4 text-base sm:text-lg md:text-xl font-medium text-slate-300',
     content: 'Building AI-powered apps',
   },
   {
     delay: 0.6,
     element: 'p',
     className:
-      'hero-subline mt-1 text-sm sm:text-base font-normal text-slate-500 tracking-wide',
+      'hero-subline mt-1 text-xs sm:text-sm md:text-base font-normal text-slate-500 tracking-wide',
     content: 'OCR · RAG · Face Recognition',
   },
 ];

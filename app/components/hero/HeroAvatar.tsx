@@ -44,8 +44,8 @@ export default function HeroAvatar() {
       <div
         className="relative z-10 rounded-full overflow-hidden"
         style={{
-          width: 'clamp(220px, 28vw, 320px)',
-          height: 'clamp(220px, 28vw, 320px)',
+          width: 'clamp(160px, 50vw, 220px)',
+          height: 'clamp(160px, 50vw, 220px)',
           animation: 'avatarFloat 6s ease-in-out infinite',
           border: '2px solid transparent',
           background:
